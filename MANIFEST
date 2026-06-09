@@ -17,6 +17,7 @@ lib/Samizdat/resources/locale/email/pt/email.po
 lib/Samizdat/resources/locale/email/ru/email.po
 lib/Samizdat/resources/locale/email/sv/email.po
 lib/Samizdat/resources/locale/email/zh/email.po
+lib/Samizdat/resources/migrations/pg/40-postfix.sql
 lib/Samizdat/resources/templates/account/email/index.html.ep
 lib/Samizdat/resources/templates/account/email/index.js
 lib/Samizdat/resources/templates/account/email/sidebar.html.ep
