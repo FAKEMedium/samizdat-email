@@ -1,0 +1,99 @@
+<form id="mailboxSyncForm" class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title"><%== __('Sync mailbox') %>: <%= $username %></h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<%== __('Close') %>"></button>
+  </div>
+
+  <div class="modal-body">
+    <p class="text-muted small">
+      <%== __('Copy messages between an external IMAP account and this mailbox. Runs as a background job using imapsync.') %>
+    </p>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h6 class="orange p-2"><%== __('Source (remote)') %></h6>
+        <div class="mb-2">
+          <label for="src_host" class="form-label"><%== __('Host') %></label>
+          <input type="text" id="src_host" name="src_host" class="form-control" required placeholder="imap.example.com">
+        </div>
+        <div class="row">
+          <div class="col-4 mb-2">
+            <label for="src_port" class="form-label"><%== __('Port') %></label>
+            <input type="number" id="src_port" name="src_port" class="form-control" value="993" min="1" max="65535">
+          </div>
+          <div class="col-8 mb-2 d-flex align-items-end">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="src_ssl" name="src_ssl" checked>
+              <label class="form-check-label" for="src_ssl"><%== __('Use SSL/TLS') %></label>
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <label for="src_user" class="form-label"><%== __('Username') %></label>
+          <input type="text" id="src_user" name="src_user" class="form-control" required autocomplete="off">
+        </div>
+        <div class="mb-2">
+          <label for="src_password" class="form-label"><%== __('Password') %></label>
+          <input type="password" id="src_password" name="src_password" class="form-control" required autocomplete="new-password">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <h6 class="orange p-2"><%== __('Destination (local)') %></h6>
+        <div class="mb-2">
+          <label for="dst_host" class="form-label"><%== __('Host') %></label>
+          <input type="text" id="dst_host" name="dst_host" class="form-control" required value="<%= $default_dst_host %>">
+        </div>
+        <div class="row">
+          <div class="col-4 mb-2">
+            <label for="dst_port" class="form-label"><%== __('Port') %></label>
+            <input type="number" id="dst_port" name="dst_port" class="form-control" value="993" min="1" max="65535">
+          </div>
+          <div class="col-8 mb-2 d-flex align-items-end">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="dst_ssl" name="dst_ssl" checked>
+              <label class="form-check-label" for="dst_ssl"><%== __('Use SSL/TLS') %></label>
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <label for="dst_user" class="form-label"><%== __('Username') %></label>
+          <input type="text" id="dst_user" name="dst_user" class="form-control" required value="<%= $username %>" autocomplete="off">
+        </div>
+        <div class="mb-2">
+          <label for="dst_password" class="form-label"><%== __('Password') %></label>
+          <input type="password" id="dst_password" name="dst_password" class="form-control" required autocomplete="new-password">
+        </div>
+      </div>
+    </div>
+
+    <h6 class="orange p-2 mt-2"><%== __('Options') %></h6>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="dry_run" name="dry_run" checked>
+          <label class="form-check-label" for="dry_run"><%== __('Dry run (no changes)') %></label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="delete_source" name="delete_source">
+          <label class="form-check-label" for="delete_source"><%== __('Delete from source after copy') %></label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="skip_existing" name="skip_existing" checked>
+          <label class="form-check-label" for="skip_existing"><%== __('Skip messages already present') %></label>
+        </div>
+      </div>
+    </div>
+
+    <div id="syncResult" class="alert mt-3 d-none"></div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%== __('Cancel') %></button>
+    <button type="submit" class="btn btn-primary" id="syncStartBtn"><%== __('Start sync') %></button>
+  </div>
+</form>

@@ -1,0 +1,13 @@
+^\.git/
+^\.github/
+\bMakefile$
+\bblib/
+\bpm_to_blib$
+^MYMETA\.
+^Samizdat-Plugin-Email-
+\.tar\.gz$
+~$
+\.bak$
+\.orig$
+\.rej$
+\.swp$
