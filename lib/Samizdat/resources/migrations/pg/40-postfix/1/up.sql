@@ -1,4 +1,3 @@
--- 1 up
 --
 -- PostgreSQL database dump
 --
@@ -617,6 +616,3 @@ ALTER TABLE ONLY postfix.vacation_notification
 --
 -- PostgreSQL database dump complete
 --
-
--- 1 down
-DROP SCHEMA IF EXISTS postfix CASCADE;
